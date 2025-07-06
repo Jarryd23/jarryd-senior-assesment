@@ -1,0 +1,33 @@
+{
+  "originHash" : "28a0af89690be2186486e1888f0aa19260228620641affdfea7dd25eb40da79d",
+  "pins" : [
+    {
+      "identity" : "needle",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/uber/needle",
+      "state" : {
+        "branch" : "master",
+        "revision" : "2a79817bc25d162eef2362f82f0fe2b005cbd3b0"
+      }
+    },
+    {
+      "identity" : "realm-core",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/realm/realm-core.git",
+      "state" : {
+        "revision" : "15493076ad9fef22c16cc64cbfbf9e5b65c385f9",
+        "version" : "20.1.0"
+      }
+    },
+    {
+      "identity" : "realm-swift",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/realm/realm-swift",
+      "state" : {
+        "revision" : "6260534683132eb981338c7c39fd5e69205876e6",
+        "version" : "20.0.3"
+      }
+    }
+  ],
+  "version" : 3
+}

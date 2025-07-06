@@ -10,11 +10,13 @@ struct ContentView: View {
                           systemImage: "house")
                 }
                 
-            Text("Tab 2")
-                .tabItem {
-                    Label("All Tasks",
-                          systemImage: "list.bullet")
-                }
+            NavigationStack {
+                RootComponent().tasksComponent.rootView
+                    .tabItem {
+                        Label("All Tasks",
+                              systemImage: "list.bullet")
+                    }
+            }
         }
     }
 }
