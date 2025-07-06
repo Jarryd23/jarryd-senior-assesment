@@ -1,17 +1,20 @@
 import SwiftUI
 
-struct DashboardView: View {
+struct ContentView: View {
     var body: some View {
-        VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundStyle(.tint)
-            Text("Hello, world!")
+        TabView {
+            DashboardView()
+                
+                .tabItem {
+                    Label("Today",
+                          systemImage: "house")
+                }
+                
+            Text("Tab 2")
+                .tabItem {
+                    Label("All Tasks",
+                          systemImage: "list.bullet")
+                }
         }
-        .padding()
     }
-}
-
-#Preview {
-    DashboardView()
 }
