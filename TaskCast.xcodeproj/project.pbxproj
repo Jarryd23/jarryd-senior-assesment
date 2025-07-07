@@ -48,9 +48,22 @@
 		030C870D2E19A8770080952D /* TaskCastUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TaskCastUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
+/* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
+		037451422E1C313100448AF5 /* Exceptions for "TaskCast" folder in "TaskCast" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				Info.plist,
+			);
+			target = 030C86F12E19A8760080952D /* TaskCast */;
+		};
+/* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
+
 /* Begin PBXFileSystemSynchronizedRootGroup section */
 		030C86F42E19A8760080952D /* TaskCast */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
+			exceptions = (
+				037451422E1C313100448AF5 /* Exceptions for "TaskCast" folder in "TaskCast" target */,
+			);
 			path = TaskCast;
 			sourceTree = "<group>";
 		};
@@ -323,6 +336,8 @@
 /* Begin XCBuildConfiguration section */
 		030C87152E19A8770080952D /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReferenceAnchor = 030C86F42E19A8760080952D /* TaskCast */;
+			baseConfigurationReferenceRelativePath = Config/Secrets.xcconfig;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
@@ -437,6 +452,8 @@
 		};
 		030C87182E19A8770080952D /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReferenceAnchor = 030C86F42E19A8760080952D /* TaskCast */;
+			baseConfigurationReferenceRelativePath = Config/Secrets.xcconfig;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -448,6 +465,8 @@
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = TaskCast/Info.plist;
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "TaskCast needs your location to calculate sunrise and sunset times for your tasks.";
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphoneos*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphonesimulator*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents[sdk=iphoneos*]" = YES;
@@ -487,6 +506,8 @@
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = TaskCast/Info.plist;
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "TaskCast needs your location to calculate sunrise and sunset times for your tasks.";
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphoneos*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphonesimulator*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents[sdk=iphoneos*]" = YES;
@@ -515,6 +536,8 @@
 		};
 		030C871B2E19A8770080952D /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReferenceAnchor = 030C86F42E19A8760080952D /* TaskCast */;
+			baseConfigurationReferenceRelativePath = Config/Secrets.xcconfig;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
@@ -561,6 +584,8 @@
 		};
 		030C871E2E19A8770080952D /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReferenceAnchor = 030C86F42E19A8760080952D /* TaskCast */;
+			baseConfigurationReferenceRelativePath = Config/Secrets.xcconfig;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
