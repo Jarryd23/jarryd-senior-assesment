@@ -80,17 +80,4 @@ extension View {
     }
 }
 
-struct EmptyTaskRule: Rule {
-    func validate(value: [String]) -> Bool {
-        for text in value {
-            if text.isEmpty {
-                return true
-            }
-        }
-        return false
-    }
-    
-    func errorMessage() -> String {
-        "Please enter a valid task title"
-    }
-}
+
