@@ -1,12 +1,12 @@
 import SwiftUI
 
 struct ToDoTaskListItem: View {
-    @StateObject private var vm: TaskItemViewModel
+    @StateObject private var taskViewModel: TaskItemViewModel
     @Environment(\.colorScheme) private var colorScheme
     private let haptic = UINotificationFeedbackGenerator()
 
     init(taskViewModel: TaskItemViewModel) {
-        _vm = StateObject(wrappedValue: taskViewModel)
+        _taskViewModel = StateObject(wrappedValue: taskViewModel)
         haptic.prepare()
     }
 
@@ -19,21 +19,19 @@ struct ToDoTaskListItem: View {
                 Image(systemName: "circle")
                     .resizable()
                     .frame(width: 30, height: 30)
-                    .foregroundColor(Color(uiColor: .purple))
+                    .foregroundColor(Color(uiColor: .orange))
                     .onTapGesture {
                         haptic.notificationOccurred(.success)
-                        vm.toggleCompleted(isComplete: true)
+                        taskViewModel.toggleCompleted(isComplete: true)
                     }
 
                 VStack(alignment: .leading, spacing: 8) {
-                    Text(vm.task.title).font(.title2).bold()
-                    Text(vm.task.description).fontWeight(.light)
+                    Text(taskViewModel.task.title).font(.title2).bold()
+                    Text(taskViewModel.task.description).fontWeight(.light)
                 }
                 .frame(maxWidth: .infinity, alignment: .leading)
             }
             .padding()
         }
-        .scaleEffect(vm.shouldAnimate ? 0 : 1)
-        .opacity(vm.shouldAnimate ? 0 : 1)
     }
 }
