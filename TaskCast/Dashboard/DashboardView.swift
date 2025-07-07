@@ -1,30 +1,41 @@
 import SwiftUI
 
-struct DashboardView: View {
+struct DashboardView<ViewModel: DashboardViewModel,
+                     TaskView: View>: View {
+    @StateObject private var viewModel: ViewModel
+    @Environment(\.colorScheme) private var colorScheme
+    var taskView: TaskView
+    
+    init(viewModel: ViewModel,
+         taskView: TaskView) {
+        _viewModel = StateObject(wrappedValue: viewModel)
+        self.taskView = taskView
+    }
+    
     var body: some View {
-        VStack {
-            SolarPositionTemperatureView(title: "Johannesburg",
-                                         progress: 23,
-                                         minValue: 0,
-                                         maxValue: 100)
-                .frame(height: 300)
+        List {
+            Section {
+                SolarPositionTemperatureView(location: viewModel.locationName,
+                                             temperature: viewModel.temperature,
+                                             sunrise: viewModel.sunrise,
+                                             sunset: viewModel.sunset)
+                .frame(height: 280)
                 .padding()
-            Spacer()
-            Text("Today's Tasks")
-                .foregroundStyle(.white)
-                .font(.largeTitle)
-                .bold()
-                .padding(.top)
-            CurrentTaskView()
+            }
+            .listRowBackground(Color.clear)
+            taskView
         }
-        .frame(maxWidth: .infinity, maxHeight: .infinity)
-        .background(
-            LinearGradient(gradient: Gradient(colors: SkyColor.night.rawValue), startPoint: .top, endPoint: .bottom)
-        )
+        .refreshable {
+            await viewModel.fetchWeatherData()
+        }
+        .background {
+            LinearGradient(gradient: Gradient(colors: SkyColor.dusk.rawValue), startPoint: .topLeading, endPoint: .bottomTrailing)
+                .ignoresSafeArea()
+        }
+        .scrollContentBackground(.hidden)
     }
 }
 
 #Preview {
-    DashboardView()
+    //DashboardView()
 }
-
