@@ -4,7 +4,6 @@ import SwiftUI
 
 public protocol TasksViewModel {
     var currentTasks: [TaskItemViewModel] { get set }
-    var completedTasks: [TaskItemViewModel] { get }
     var taskProgress: Double { get }
     func deleteTask(with id: String)
     func updateTaskStatus(with id: String, isCompleted: Bool)
@@ -12,7 +11,6 @@ public protocol TasksViewModel {
 
 public class ConcreteTasksViewModel: TasksViewModel, ObservableObject {
     @Published public var currentTasks: [TaskItemViewModel] = []
-    @Published public var completedTasks: [TaskItemViewModel] = []
     @Published public var taskProgress: Double = 0.0
     private var taskProvider: TaskProvider
     private var cancellables: Set<AnyCancellable> = []
@@ -25,7 +23,6 @@ public class ConcreteTasksViewModel: TasksViewModel, ObservableObject {
     func observeTasks() {
         taskProvider.tasksPublisher.sink { [weak self] tasks in
             self?.currentTasks = []
-            self?.completedTasks = []
             
             for task in tasks {
                 guard let taskProvider = self?.taskProvider else { continue }
@@ -49,7 +46,7 @@ public class ConcreteTasksViewModel: TasksViewModel, ObservableObject {
     }
 }
 
-public struct DisplayedTask {
+public struct DisplayedTask: Hashable {
     var id: String
     var title: String
     var description: String
