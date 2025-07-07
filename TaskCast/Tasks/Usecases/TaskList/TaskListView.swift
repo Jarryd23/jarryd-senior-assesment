@@ -13,55 +13,56 @@ struct TasksListView: View {
     
     var body: some View {
         VStack {
-            VStack {
-                ProgressView(value: tasksViewModel.taskProgress)
-                            .progressViewStyle(LinearProgressViewStyle(tint: Color.green))
-                            .frame(height: 15)
-                            .padding(.horizontal, 4)
-                
-                HStack {
-                    Text("\(tasksViewModel.currentTasks.filter({ $0.task.isCompleted }).count) Complete").font(.subheadline).bold()
-                    Spacer()
-                    Text("\(tasksViewModel.currentTasks.filter({ !$0.task.isCompleted }).count) To Do").font(.subheadline).bold()
-                }
-            }
-            .padding()
-            if tasksViewModel.currentTasks.isEmpty && tasksViewModel.completedTasks.isEmpty {
+            
+            if tasksViewModel.currentTasks.isEmpty {
                 EmptyTaskView(showNewTask: $showNewTask)
             } else {
-                    List {
-                        if !tasksViewModel.currentTasks.filter({ !$0.task.isCompleted }).isEmpty {
-                            todoSection
-                        }
-                        if !tasksViewModel.currentTasks.filter({ $0.task.isCompleted }).isEmpty {
-                            completedSection
+                VStack {
+                    ProgressView(value: tasksViewModel.taskProgress)
+                        .progressViewStyle(LinearProgressViewStyle(tint: Color.green))
+                        .frame(height: 15)
+                        .padding(.horizontal, 4)
+                    
+                    HStack {
+                        Text("\(tasksViewModel.currentTasks.filter({ $0.task.isCompleted }).count) Complete").font(.subheadline).bold()
+                        Spacer()
+                        Text("\(tasksViewModel.currentTasks.filter({ !$0.task.isCompleted }).count) To Do").font(.subheadline).bold()
+                    }
+                }
+                .padding()
+                List {
+                    if !tasksViewModel.currentTasks.filter({ !$0.task.isCompleted }).isEmpty {
+                        todoSection
+                    }
+                    if !tasksViewModel.currentTasks.filter({ $0.task.isCompleted }).isEmpty {
+                        completedSection
+                    }
+                }
+                .toolbar {
+                    ToolbarItemGroup {
+                        Button {
+                            showNewTask.toggle()
+                        } label: {
+                            Label("New Task", image: "")
                         }
                     }
-                    .toolbar {
-                        ToolbarItemGroup {
-                            Button {
-                                showNewTask.toggle()
-                            } label: {
-                                Label("New Task", image: "")
-                            }
-                        }
-                    }
-                    .cornerRadius(25, corners: [.topLeft, .topRight])
+                }
+                .cornerRadius(25, corners: [.topLeft, .topRight])
             }
             
         }
         .animation(.linear, value: shouldAnimateList)
-        .tint(Color(uiColor: .purple))
+        .tint(Color(uiColor: .orange))
         .navigationTitle("Tasks")
         .sheet(isPresented: $showNewTask, content: {
-                NavigationStack {
-                    NewTaskView(taskTitle: "", taskDescription: "", dueDate: Date(), taskRepository: RootComponent().tasksComponent.taskProvider).navigationTitle("New Task")
-                        .navigationBarTitleDisplayMode(.inline)
-                        .navigationBarItems(trailing: Button("Cancel") {
-                            showNewTask = false
-                        })
-                        .tint(.purple)
-                }
+            NavigationStack {
+                NewTaskView(taskTitle: "", taskDescription: "", dueDate: Date(), taskRepository: RootComponent().tasksComponent.taskProvider).navigationTitle("New Task")
+                    .navigationBarTitleDisplayMode(.inline)
+                    .navigationBarItems(trailing: Button("Cancel") {
+                        showNewTask = false
+                    })
+                    .tint(.orange)
+            }
         })
     }
     
@@ -86,19 +87,18 @@ struct TasksListView: View {
                 CompletedTaskListItem(taskViewModel: task)
                     .swipeActions(allowsFullSwipe: true) {
                         Button(role: .destructive) {
-                            DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
-                                tasksViewModel.deleteTask(with: tasksViewModel.currentTasks.filter({ $0.task.isCompleted })[index].task.id)
-                            }
-                            
+                            tasksViewModel.deleteTask(with: tasksViewModel.currentTasks.filter({ $0.task.isCompleted })[index].task.id)
                         } label: {
                             Label("Delete", systemImage: "trash")
                         }
                         .tint(.red)
                         
                         Button {
-                            tasksViewModel.currentTasks.filter({ $0.task.isCompleted })[index].toggleCompleted(isComplete: false)
+                            DispatchQueue.main.asyncAfter(deadline: .now() + 0.9) {
+                                tasksViewModel.currentTasks.filter({ $0.task.isCompleted })[index].toggleCompleted(isComplete: false)
+                            }
                         } label: {
-                            Label("Move to To Do", systemImage: "arrowshape.turn.up.backward")
+                            Label("Move Back", systemImage: "arrowshape.turn.up.backward")
                         }.tint(.indigo)
                     }
             }
@@ -131,7 +131,7 @@ struct EmptyTaskView: View {
 struct TaskButton: View {
     var buttonText: String
     var action: () -> Void
-
+    
     var body: some View {
         Button(action: action) {
             Text(buttonText)
@@ -139,8 +139,8 @@ struct TaskButton: View {
                 .foregroundColor(.white)
                 .padding()
                 .frame(maxWidth: .infinity)
-                .background(Color(uiColor: .purple))
-                .cornerRadius(10)
+                .background(Color(uiColor: .orange))
+                .cornerRadius(20)
                 .shadow(radius: 5)
                 .padding()
         }
@@ -156,7 +156,7 @@ extension View {
 struct CornerRadiusStyle: Shape {
     var radius: CGFloat = .infinity
     var corners: UIRectCorner = .allCorners
-
+    
     func path(in rect: CGRect) -> Path {
         let path = UIBezierPath(roundedRect: rect, byRoundingCorners: corners, cornerRadii: CGSize(width: radius, height: radius))
         return Path(path.cgPath)

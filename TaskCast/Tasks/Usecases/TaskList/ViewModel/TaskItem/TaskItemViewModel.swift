@@ -1,8 +1,6 @@
 import SwiftUI
 
 public class TaskItemViewModel: ObservableObject {
-    @Published var shouldAnimate = false
-
     let task: DisplayedTask
     private let provider: TaskProvider
 
@@ -12,8 +10,8 @@ public class TaskItemViewModel: ObservableObject {
     }
 
     func toggleCompleted(isComplete: Bool) {
-        shouldAnimate = isComplete
-        provider.updateTaskStatus(for: task.id, to: isComplete)
-        shouldAnimate = !isComplete
+        withAnimation {
+            provider.updateTaskStatus(for: task.id, to: isComplete)
+        }
     }
 }

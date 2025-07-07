@@ -22,6 +22,7 @@ public class ConcreteTasksViewModel: TasksViewModel, ObservableObject {
     
     func observeTasks() {
         taskProvider.tasksPublisher.sink { [weak self] tasks in
+            withAnimation {
             self?.currentTasks = []
             
             for task in tasks {
@@ -30,7 +31,7 @@ public class ConcreteTasksViewModel: TasksViewModel, ObservableObject {
                 self?.currentTasks.append(TaskItemViewModel(task: DisplayedTask(id: task.id, title: task.title, description: task.description, isCompleted: task.isCompleted, dueDate: task.dueDate), provider: taskProvider))
             }
             
-            withAnimation {
+            
                 self?.taskProgress = Double(self?.currentTasks.count == 0 ? 0 : Double(self?.currentTasks.filter({$0.task.isCompleted}).count ?? 0) / Double(self?.currentTasks.count ?? 1))
             }
             
