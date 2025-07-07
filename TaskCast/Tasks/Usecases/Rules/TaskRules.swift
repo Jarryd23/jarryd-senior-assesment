@@ -9,13 +9,18 @@ protocol TaskValidatable {
     var taskValidationRules: [Rule] { get }
 }
 
-struct EmptyNameRule: Rule {
+struct EmptyTaskRule: Rule {
     func validate(value: [String]) -> Bool {
-        value.first?.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty ?? true
+        for text in value {
+            if text.isEmpty {
+                return true
+            }
+        }
+        return false
     }
-
+    
     func errorMessage() -> String {
-        "Task name cannot be empty"
+        "Task title cannot be empty"
     }
 }
 
