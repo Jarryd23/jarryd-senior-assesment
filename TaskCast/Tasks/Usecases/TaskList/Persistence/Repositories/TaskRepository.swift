@@ -16,7 +16,6 @@ public class TaskRepository: TaskProvider {
     var realmAdapter: RealmAdapter
     let psub = PassthroughSubject<[ToDoTask], Never>()
     private var notificationToken: NotificationToken?
-    private var notificationToken2: NotificationToken?
     
     public init(realmAdapter: RealmAdapter) {
         self.realmAdapter = realmAdapter
@@ -41,7 +40,7 @@ public class TaskRepository: TaskProvider {
     }
     
     public func editTask(id: String, changes: ToDoTask) {
-        guard let task = realmAdapter.object(TaskModel.self, forPrimaryKey: id) else { return }
+        guard let _ = realmAdapter.object(TaskModel.self, forPrimaryKey: id) else { return }
         realmAdapter.write {
             realmAdapter.realm.add(TaskModel(task: changes), update: .modified)
         }
@@ -75,6 +74,5 @@ public class TaskRepository: TaskProvider {
     
     deinit {
         notificationToken?.invalidate()
-        notificationToken2?.invalidate()
     }
 }
