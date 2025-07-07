@@ -11,6 +11,14 @@ class TasksComponent: Component<TaskComponentDependencies>{
         TasksListView(showNewTask: false, tasksViewModel: tasksviewModel)
     }
     
+    public var todayTaskView: some View {
+        TodayTaskView(viewModel: todayTaskViewModel)
+    }
+    
+    public var todayTaskViewModel: some TodayTaskViewModel {
+        ConcreteTodayTaskViewModel(taskProvider: taskProvider)
+    }
+    
     public var tasksviewModel: TasksViewModel {
         ConcreteTasksViewModel(taskprovider: taskProvider)
     }
