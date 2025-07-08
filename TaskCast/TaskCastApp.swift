@@ -10,3 +10,12 @@ struct TaskCastApp: App {
         }
     }
 }
+
+class DependecyContainer {
+    static let shared = DependecyContainer()
+    let rootComponent: RootComponent
+    
+    private init() {
+        rootComponent = RootComponent()
+    }
+}
