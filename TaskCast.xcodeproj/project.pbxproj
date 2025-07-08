@@ -6,6 +6,14 @@
 	objectVersion = 77;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		030C875A2E1ACB1C0080952D /* NeedleFoundation in Frameworks */ = {isa = PBXBuildFile; productRef = 030C87592E1ACB1C0080952D /* NeedleFoundation */; };
+		030C875C2E1ACB1C0080952D /* NeedleFoundationTest in Frameworks */ = {isa = PBXBuildFile; productRef = 030C875B2E1ACB1C0080952D /* NeedleFoundationTest */; };
+		030C87802E1AEADC0080952D /* RealmSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 030C877F2E1AEADC0080952D /* RealmSwift */; };
+		0374523A2E1D6CBA00448AF5 /* RealmSwift in Embed Frameworks */ = {isa = PBXBuildFile; productRef = 030C877F2E1AEADC0080952D /* RealmSwift */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
+		037452402E1D9DB800448AF5 /* SimpleToast in Frameworks */ = {isa = PBXBuildFile; productRef = 0374523F2E1D9DB800448AF5 /* SimpleToast */; };
+/* End PBXBuildFile section */
+
 /* Begin PBXContainerItemProxy section */
 		030C87042E19A8770080952D /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -23,15 +31,42 @@
 		};
 /* End PBXContainerItemProxy section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		030C87792E1AEA2E0080952D /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				0374523A2E1D6CBA00448AF5 /* RealmSwift in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
 		030C86F22E19A8760080952D /* TaskCast.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TaskCast.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		030C87032E19A8770080952D /* TaskCastTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TaskCastTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		030C870D2E19A8770080952D /* TaskCastUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TaskCastUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
+/* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
+		037451422E1C313100448AF5 /* Exceptions for "TaskCast" folder in "TaskCast" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				Info.plist,
+			);
+			target = 030C86F12E19A8760080952D /* TaskCast */;
+		};
+/* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
+
 /* Begin PBXFileSystemSynchronizedRootGroup section */
 		030C86F42E19A8760080952D /* TaskCast */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
+			exceptions = (
+				037451422E1C313100448AF5 /* Exceptions for "TaskCast" folder in "TaskCast" target */,
+			);
 			path = TaskCast;
 			sourceTree = "<group>";
 		};
@@ -52,6 +87,10 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				037452402E1D9DB800448AF5 /* SimpleToast in Frameworks */,
+				030C87802E1AEADC0080952D /* RealmSwift in Frameworks */,
+				030C875C2E1ACB1C0080952D /* NeedleFoundationTest in Frameworks */,
+				030C875A2E1ACB1C0080952D /* NeedleFoundation in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -100,8 +139,10 @@
 			buildConfigurationList = 030C87172E19A8770080952D /* Build configuration list for PBXNativeTarget "TaskCast" */;
 			buildPhases = (
 				030C86EE2E19A8760080952D /* Sources */,
+				030C876D2E1AE5490080952D /* Needle */,
 				030C86EF2E19A8760080952D /* Frameworks */,
 				030C86F02E19A8760080952D /* Resources */,
+				030C87792E1AEA2E0080952D /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -112,6 +153,10 @@
 			);
 			name = TaskCast;
 			packageProductDependencies = (
+				030C87592E1ACB1C0080952D /* NeedleFoundation */,
+				030C875B2E1ACB1C0080952D /* NeedleFoundationTest */,
+				030C877F2E1AEADC0080952D /* RealmSwift */,
+				0374523F2E1D9DB800448AF5 /* SimpleToast */,
 			);
 			productName = TaskCast;
 			productReference = 030C86F22E19A8760080952D /* TaskCast.app */;
@@ -195,6 +240,11 @@
 			);
 			mainGroup = 030C86E92E19A8760080952D;
 			minimizedProjectReferenceProxies = 1;
+			packageReferences = (
+				030C87582E1ACB1C0080952D /* XCRemoteSwiftPackageReference "needle" */,
+				030C877E2E1AEADC0080952D /* XCRemoteSwiftPackageReference "realm-swift" */,
+				0374523E2E1D9DB800448AF5 /* XCRemoteSwiftPackageReference "SimpleToast" */,
+			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = 030C86F32E19A8760080952D /* Products */;
 			projectDirPath = "";
@@ -230,6 +280,27 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		030C876D2E1AE5490080952D /* Needle */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = Needle;
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\n/opt/homebrew/bin/needle generate TaskCast/Generated/NeedleGenerated.swift TaskCast/\n";
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		030C86EE2E19A8760080952D /* Sources */ = {
@@ -271,6 +342,8 @@
 /* Begin XCBuildConfiguration section */
 		030C87152E19A8770080952D /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReferenceAnchor = 030C86F42E19A8760080952D /* TaskCast */;
+			baseConfigurationReferenceRelativePath = Config/Secrets.xcconfig;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
@@ -306,7 +379,7 @@
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
-				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu17;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
@@ -367,7 +440,7 @@
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu17;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
@@ -385,6 +458,8 @@
 		};
 		030C87182E19A8770080952D /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReferenceAnchor = 030C86F42E19A8760080952D /* TaskCast */;
+			baseConfigurationReferenceRelativePath = Config/Secrets.xcconfig;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -396,6 +471,8 @@
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = TaskCast/Info.plist;
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "TaskCast needs your location to calculate sunrise and sunset times for your tasks.";
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphoneos*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphonesimulator*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents[sdk=iphoneos*]" = YES;
@@ -435,6 +512,8 @@
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = TaskCast/Info.plist;
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "TaskCast needs your location to calculate sunrise and sunset times for your tasks.";
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphoneos*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphonesimulator*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents[sdk=iphoneos*]" = YES;
@@ -463,6 +542,8 @@
 		};
 		030C871B2E19A8770080952D /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReferenceAnchor = 030C86F42E19A8760080952D /* TaskCast */;
+			baseConfigurationReferenceRelativePath = Config/Secrets.xcconfig;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
@@ -509,6 +590,8 @@
 		};
 		030C871E2E19A8770080952D /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReferenceAnchor = 030C86F42E19A8760080952D /* TaskCast */;
+			baseConfigurationReferenceRelativePath = Config/Secrets.xcconfig;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
@@ -591,6 +674,56 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		030C87582E1ACB1C0080952D /* XCRemoteSwiftPackageReference "needle" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/uber/needle";
+			requirement = {
+				branch = master;
+				kind = branch;
+			};
+		};
+		030C877E2E1AEADC0080952D /* XCRemoteSwiftPackageReference "realm-swift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/realm/realm-swift";
+			requirement = {
+				kind = exactVersion;
+				version = 20.0.3;
+			};
+		};
+		0374523E2E1D9DB800448AF5 /* XCRemoteSwiftPackageReference "SimpleToast" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/sanzaru/SimpleToast";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 0.11.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		030C87592E1ACB1C0080952D /* NeedleFoundation */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 030C87582E1ACB1C0080952D /* XCRemoteSwiftPackageReference "needle" */;
+			productName = NeedleFoundation;
+		};
+		030C875B2E1ACB1C0080952D /* NeedleFoundationTest */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 030C87582E1ACB1C0080952D /* XCRemoteSwiftPackageReference "needle" */;
+			productName = NeedleFoundationTest;
+		};
+		030C877F2E1AEADC0080952D /* RealmSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 030C877E2E1AEADC0080952D /* XCRemoteSwiftPackageReference "realm-swift" */;
+			productName = RealmSwift;
+		};
+		0374523F2E1D9DB800448AF5 /* SimpleToast */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 0374523E2E1D9DB800448AF5 /* XCRemoteSwiftPackageReference "SimpleToast" */;
+			productName = SimpleToast;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 030C86EA2E19A8760080952D /* Project object */;
 }
