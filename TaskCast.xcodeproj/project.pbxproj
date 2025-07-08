@@ -49,6 +49,7 @@
 		030C86F22E19A8760080952D /* TaskCast.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TaskCast.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		030C87032E19A8770080952D /* TaskCastTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TaskCastTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		030C870D2E19A8770080952D /* TaskCastUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TaskCastUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		0374524A2E1DC9AD00448AF5 /* TaskCastTests.xctestplan */ = {isa = PBXFileReference; lastKnownFileType = text; path = TaskCastTests.xctestplan; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
@@ -114,6 +115,7 @@
 		030C86E92E19A8760080952D = {
 			isa = PBXGroup;
 			children = (
+				0374524A2E1DC9AD00448AF5 /* TaskCastTests.xctestplan */,
 				030C86F42E19A8760080952D /* TaskCast */,
 				030C87062E19A8770080952D /* TaskCastTests */,
 				030C87102E19A8770080952D /* TaskCastUITests */,
