@@ -10,21 +10,25 @@ class ConcreteTodayTaskViewModel: ObservableObject, TodayTaskViewModel {
     private var taskProvider: TaskProvider
     private var cancellables: Set<AnyCancellable> = []
     
+    init(taskProvider: TaskProvider) {
+        self.taskProvider = taskProvider
+        observeTasks()
+    }
+    
     func observeTasks() {
         taskProvider.tasksPublisher.sink { [weak self] tasks in
             self?.tasksDueToday = []
             
             for task in tasks {
                 if task.dueDate.isSameDay(as: Date()) {
-                    self?.tasksDueToday.append(DisplayedTask(id: task.id, title: task.title, description: task.description, isCompleted: task.isCompleted, dueDate: task.dueDate))
+                    self?.tasksDueToday.append(DisplayedTask(id: task.id,
+                                                             title: task.title,
+                                                             description: task.description,
+                                                             isCompleted: task.isCompleted,
+                                                             dueDate: task.dueDate))
                 }
             }
             
         }.store(in: &cancellables)
-    }
-    
-    init(taskProvider: TaskProvider) {
-        self.taskProvider = taskProvider
-        observeTasks()
     }
 }

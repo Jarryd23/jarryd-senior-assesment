@@ -1,0 +1,25 @@
+{
+  "configurations" : [
+    {
+      "id" : "CA6C313B-195F-4CE2-A5F8-0AD84D1D8AED",
+      "name" : "Test Scheme Action",
+      "options" : {
+
+      }
+    }
+  ],
+  "defaultOptions" : {
+
+  },
+  "testTargets" : [
+    {
+      "parallelizable" : false,
+      "target" : {
+        "containerPath" : "container:TaskCast.xcodeproj",
+        "identifier" : "030C87022E19A8770080952D",
+        "name" : "TaskCastTests"
+      }
+    }
+  ],
+  "version" : 1
+}
