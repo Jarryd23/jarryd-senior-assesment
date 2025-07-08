@@ -5,6 +5,8 @@ struct TasksListView<ViewModel: TasksViewModel>: View {
     @StateObject var tasksViewModel: ViewModel
     @State var showListItems = false
     @State var shouldAnimateList = false
+    @State private var showDeleteAlert = false
+    @State private var pendingDeleteIndexSet: IndexSet?
     
     init(showNewTask: Bool, tasksViewModel: ViewModel) {
         self._tasksViewModel = StateObject(wrappedValue: tasksViewModel)
@@ -37,6 +39,20 @@ struct TasksListView<ViewModel: TasksViewModel>: View {
                         completedSection
                     }
                 }
+                .alert("Are you sure you want to delete this task?", isPresented: $showDeleteAlert, actions: {
+                    Button("Delete", role: .destructive) {
+                        if let indexSet = pendingDeleteIndexSet {
+                            for index in indexSet {
+                                tasksViewModel.deleteTask(with: tasksViewModel.currentTasks.filter({ !$0.task.isCompleted })[index].task.id)
+                            }
+                            pendingDeleteIndexSet = nil
+                        }
+                    }
+                    Button("Cancel", role: .cancel) {
+                        pendingDeleteIndexSet = nil
+                        showDeleteAlert = false
+                    }
+                })
                 .toolbar {
                     ToolbarItemGroup {
                         Button {
@@ -71,9 +87,8 @@ struct TasksListView<ViewModel: TasksViewModel>: View {
                 ToDoTaskListItem(taskViewModel: task)
             }
             .onDelete { indexSet in
-                for index in indexSet {
-                    tasksViewModel.deleteTask(with: tasksViewModel.currentTasks.filter({ !$0.task.isCompleted })[index].task.id)
-                }
+                pendingDeleteIndexSet = indexSet
+                showDeleteAlert = true
             }
             .listRowInsets(EdgeInsets(top: 0, leading: 0, bottom: 0, trailing: 0))
             .listRowBackground(Color.clear)
