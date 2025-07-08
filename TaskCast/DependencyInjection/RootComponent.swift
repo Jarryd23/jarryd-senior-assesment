@@ -3,7 +3,6 @@ import RealmSwift
 import SwiftUI
 
 class RootComponent: BootstrapComponent, ObservableObject {
-    
     public var realmAdapter: RealmAdapter {
         shared {
             taskCastRealmAdapter()
@@ -24,11 +23,19 @@ class RootComponent: BootstrapComponent, ObservableObject {
         WeatherComponent(parent: self)
     }
     
+    public var onboardingComponent: OnboardingComponent {
+        OnboardingComponent(parent: self)
+    }
+    
     public var rootView: some View {
         DashboardView(viewModel: dashboardViewModel, taskView: tasksComponent.todayTaskView)
     }
     
+    public var mapSelectionView: some View {
+        MapView(delegate: onboardingComponent.onboardingViewModel as? MapSelectionDelegate)
+    }
+    
     public var dashboardViewModel: some DashboardViewModel {
-        ConcreteDashboardViewModel(weatherGateway: weatherComponent.weatherGateway)
+        ConcreteDashboardViewModel(weatherGateway: weatherComponent.weatherGateway, weatherProvider: weatherComponent.weatherProvider)
     }
 }
