@@ -6,11 +6,9 @@ public typealias RealmDecodable = Object & Decodable
 
 @objc public protocol TaskCastCachingDomain {}
 
-
-func getConfiguration(fileName: String, objectTypes: [Object.Type]) -> Realm.Configuration {
+func getConfiguration(fileName: String) -> Realm.Configuration {
     var configuration = Realm.Configuration.defaultConfiguration
     configuration.fileURL = configuration.fileURL?.deletingLastPathComponent().appendingPathComponent(fileName)
-    configuration.objectTypes = objectTypes
     return configuration
 }
 
@@ -29,9 +27,6 @@ public class RealmAdapter {
             _ = try Realm(configuration: configuration)
         } catch let error {
             os_log("Cannot create realm, attempting to delete: %@", log: .default, type: .debug, error.localizedDescription)
-            // The only reason this should fail really is if we can't decrypt an existing realm because the encryption key changed.
-            // Our only recourse is to delete the Realm, and retry the configuration.
-            // THIS SHOULD ONLY BE DONE ON APP LAUNCH, BEFORE ANY OTHER REALM ACCESSES
             deleteRealm()
         }
     }
@@ -136,10 +131,8 @@ public class RealmAdapter {
 }
 
 public func taskCastRealmAdapter() -> RealmAdapter {
-    var configuration = getConfiguration(fileName: "TaskCast.realm", objectTypes: subscribers(of: TaskCastCachingDomain.Type.self).compactMap {
-        $0.classObject as? Object.Type
-    })
-    configuration.schemaVersion = 2 // This needs to be bumped whenever we change the database
-    configuration.migrationBlock = { _, _ in }  // We don't need to do any migration this time around
+    var configuration = getConfiguration(fileName: "TaskCast.realm")
+    configuration.schemaVersion = 1
+    configuration.migrationBlock = { _, _ in }
     return RealmAdapter(name: "TaskCast", configuration: configuration)
 }
