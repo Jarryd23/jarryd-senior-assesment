@@ -10,6 +10,8 @@
 		030C875A2E1ACB1C0080952D /* NeedleFoundation in Frameworks */ = {isa = PBXBuildFile; productRef = 030C87592E1ACB1C0080952D /* NeedleFoundation */; };
 		030C875C2E1ACB1C0080952D /* NeedleFoundationTest in Frameworks */ = {isa = PBXBuildFile; productRef = 030C875B2E1ACB1C0080952D /* NeedleFoundationTest */; };
 		030C87802E1AEADC0080952D /* RealmSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 030C877F2E1AEADC0080952D /* RealmSwift */; };
+		0374523A2E1D6CBA00448AF5 /* RealmSwift in Embed Frameworks */ = {isa = PBXBuildFile; productRef = 030C877F2E1AEADC0080952D /* RealmSwift */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
+		037452402E1D9DB800448AF5 /* SimpleToast in Frameworks */ = {isa = PBXBuildFile; productRef = 0374523F2E1D9DB800448AF5 /* SimpleToast */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -36,6 +38,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
+				0374523A2E1D6CBA00448AF5 /* RealmSwift in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -84,6 +87,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				037452402E1D9DB800448AF5 /* SimpleToast in Frameworks */,
 				030C87802E1AEADC0080952D /* RealmSwift in Frameworks */,
 				030C875C2E1ACB1C0080952D /* NeedleFoundationTest in Frameworks */,
 				030C875A2E1ACB1C0080952D /* NeedleFoundation in Frameworks */,
@@ -152,6 +156,7 @@
 				030C87592E1ACB1C0080952D /* NeedleFoundation */,
 				030C875B2E1ACB1C0080952D /* NeedleFoundationTest */,
 				030C877F2E1AEADC0080952D /* RealmSwift */,
+				0374523F2E1D9DB800448AF5 /* SimpleToast */,
 			);
 			productName = TaskCast;
 			productReference = 030C86F22E19A8760080952D /* TaskCast.app */;
@@ -238,6 +243,7 @@
 			packageReferences = (
 				030C87582E1ACB1C0080952D /* XCRemoteSwiftPackageReference "needle" */,
 				030C877E2E1AEADC0080952D /* XCRemoteSwiftPackageReference "realm-swift" */,
+				0374523E2E1D9DB800448AF5 /* XCRemoteSwiftPackageReference "SimpleToast" */,
 			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = 030C86F32E19A8760080952D /* Products */;
@@ -686,6 +692,14 @@
 				version = 20.0.3;
 			};
 		};
+		0374523E2E1D9DB800448AF5 /* XCRemoteSwiftPackageReference "SimpleToast" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/sanzaru/SimpleToast";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 0.11.0;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -703,6 +717,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 030C877E2E1AEADC0080952D /* XCRemoteSwiftPackageReference "realm-swift" */;
 			productName = RealmSwift;
+		};
+		0374523F2E1D9DB800448AF5 /* SimpleToast */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 0374523E2E1D9DB800448AF5 /* XCRemoteSwiftPackageReference "SimpleToast" */;
+			productName = SimpleToast;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

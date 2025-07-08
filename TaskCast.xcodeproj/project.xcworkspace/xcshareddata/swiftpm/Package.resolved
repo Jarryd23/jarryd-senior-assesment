@@ -1,5 +1,5 @@
 {
-  "originHash" : "28a0af89690be2186486e1888f0aa19260228620641affdfea7dd25eb40da79d",
+  "originHash" : "d44f19729cbe0ae506f4dfbc0bd407f171412aa2a420f9db900efbccdcaadeb6",
   "pins" : [
     {
       "identity" : "needle",
@@ -26,6 +26,15 @@
       "state" : {
         "revision" : "6260534683132eb981338c7c39fd5e69205876e6",
         "version" : "20.0.3"
+      }
+    },
+    {
+      "identity" : "simpletoast",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/sanzaru/SimpleToast",
+      "state" : {
+        "revision" : "8d49c8c16d218b03c3428a0d1c8fe79f4e2707a6",
+        "version" : "0.11.0"
       }
     }
   ],
