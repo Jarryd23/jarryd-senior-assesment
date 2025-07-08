@@ -29,7 +29,7 @@ TaskCast is an intuitive iOS app designed to help you organize your daily tasks 
 
 1. Clone the repository:  
     ```bash
-    git clone https://github.com/yourusername/taskcast.git
+    git clone https://github.com/Jarryd23/jarryd-senior-assesment.git
     ```
 2. Create a Config/Secrets.config file that contains your API key for the weather API (API_KEY="YOUR_API_KEY")
 3. Open `TaskCast.xcodeproj` in Xcode.  
