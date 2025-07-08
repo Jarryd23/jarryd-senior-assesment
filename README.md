@@ -8,13 +8,19 @@ TaskCast is an intuitive iOS app designed to help you organize your daily tasks 
 
 - **Onboarding:**  
   Get started quickly by choosing to use your current location or selecting a location manually on a map.
-
+  ---
+![Onboarding Screen](Screenshots/map.png)
 - **Dashboard:**  
   View your daily tasks alongside up-to-date weather conditions, including temperature and sunrise/sunset times.
+  ---
+![Dashboard Screen](Screenshots/dashboard.png)
+
 
 - **All Tasks:**  
   Browse and manage all your tasks in one place, with the ability to add new tasks easily.
-
+  ---
+![All Tasks Screen](Screenshots/tasks.png)
+![All Tasks Screen](Screenshots/newTask.png)
 ---
 
 ---
