@@ -4,34 +4,35 @@ import Foundation
 public func solarProgressBetween(
     start: String,
     end: String,
+    referenceTime: Date,
     calendar: Calendar = .current
 ) -> CGFloat {
     let fmt = DateFormatter()
     fmt.dateFormat = "hh:mm a"
     fmt.locale = Locale(identifier: "en_US_POSIX")
+    fmt.timeZone = TimeZone(secondsFromGMT: 0)
     
     guard
         let startTime = fmt.date(from: start),
         let endTime   = fmt.date(from: end)
     else { return 0 }
     
-    let today = calendar.dateComponents([.year, .month, .day], from: Date())
+    let today = calendar.dateComponents([.year, .month, .day], from: referenceTime)
     guard
-        let startDate = calendar.date(bySettingHour: calendar.component(.hour,   from: startTime),
+        let startTime = calendar.date(bySettingHour: calendar.component(.hour,   from: startTime),
                                       minute:        calendar.component(.minute, from: startTime),
                                       second: 0,
                                       of: calendar.date(from: today)!),
-        let endDate   = calendar.date(bySettingHour: calendar.component(.hour,   from: endTime),
+        let endTime   = calendar.date(bySettingHour: calendar.component(.hour,   from: endTime),
                                       minute:        calendar.component(.minute, from: endTime),
                                       second: 0,
                                       of: calendar.date(from: today)!)
     else { return 0 }
     
-    let now = Date()
-    let clampedNow = min(max(now, startDate), endDate)
+    let clampedRef = min(max(referenceTime, startTime), endTime)
     
-    let total   = endDate.timeIntervalSince(startDate)
-    let soFar   = clampedNow.timeIntervalSince(startDate)
+    let total   = endTime.timeIntervalSince(startTime)
+    let soFar   = clampedRef.timeIntervalSince(startTime)
     
     return total > 0 ? soFar / total : 0
 }
