@@ -30,18 +30,3 @@ struct ContentView: View {
         }
     }
 }
-
-
-import SwiftUI
-
-struct LocationUpdateView: View {
-    @State var showMapSelectionView: Bool = false
-    var body: some View {
-        TaskCastPrimaryButton(buttonText: "Change Location", action: {
-            showMapSelectionView.toggle()
-        })
-        .sheet(isPresented: $showMapSelectionView) {
-            RootComponent().mapSelectionView
-        }
-    }
-}
