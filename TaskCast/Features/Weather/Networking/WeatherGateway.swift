@@ -31,7 +31,7 @@ final class ConcreteWeatherGateway<Cache: EntityCache>: WeatherGateway where Cac
     
     private func dateFromString(
         _ string: String,
-        timeZone: TimeZone = .current
+        timeZone: TimeZone = .init(secondsFromGMT: 0)!
     ) -> Date? {
         let formatter = DateFormatter()
         formatter.dateFormat = "yyyy-MM-dd HH:mm"

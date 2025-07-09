@@ -28,6 +28,11 @@ struct DashboardView<ViewModel: DashboardViewModel,
             .listRowBackground(Color.clear)
             taskView
         }
+        .onAppear {
+            Task {
+                await viewModel.fetchWeatherData()
+            }
+        }
         .refreshable {
             await viewModel.fetchWeatherData()
         }
